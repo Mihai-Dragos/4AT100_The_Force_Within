@@ -1,0 +1,35 @@
+# --- 1. Ignore Build Artifacts (Binaries) ---
+*.obj
+*.o
+*.exe
+*.dll
+*.lib
+*.pdb
+*.map
+
+# --- 2. Ignore Generated Makefiles ---
+# CRITICAL: Do not share the makefile. It contains absolute paths to your compiler.
+# Rhapsody will regenerate this automatically when your friend hits "Build".
+*.mak
+*.mk
+makefile
+
+# --- 3. Manage the Generated Code Folder ---
+# We generally want to track the code inside the _rpy folder, 
+# but we want to ignore the junk inside it.
+
+# Ignore the entire folder initially...
+# *_rpy/
+
+# ...BUT strictly un-ignore (allow) the source files inside it:
+!*_rpy/*.c
+!*_rpy/*.cpp
+!*_rpy/*.h
+!*_rpy/*.hpp
+
+# --- 4. Rhapsody Autosaves ---
+*~
+*.bak
+*_bak
+*.bkp
+*.rpw
