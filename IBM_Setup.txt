@@ -1,0 +1,26 @@
+1. Configure Rhapsody to Stop "Machine Noise"
+Before you commit any files, you must stop Rhapsody from writing the "Current Time" and "My Computer Path" into the C/C++ files. If you don't do this, every time you generate code, the file header changes, creating merge conflicts.
+
+a. Change these properties in your Rhapsody Project (under Project > Features):
+
+	Disable Timestamps:
+
+	Find: CG::Configuration::AddGenerationTime
+
+	Set to: False
+
+Why: This stops the "Generated on Mon Feb 19..." line from appearing in every file header.
+
+
+b. Force Relative Paths:
+
+	Find: General::Model::ReferenceUnitPath
+
+	Set to: Relative
+
+Why: This ensures the project doesn't look for C:\Users\YourName\Project but rather just ..\Project.
+
+
+c. Clean File Headers (Optional but Recommended):
+
+	Check CG::File::Header. If it contains macros like $Date or $Login, remove them.
